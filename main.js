@@ -46,3 +46,5 @@ function NextPokemon() {
 
 previousButton.addEventListener("click", PreviousPokemon);
 nextButton.addEventListener("click", NextPokemon);
+
+afficherPokemon();

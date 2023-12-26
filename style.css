@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/gill-sans-mt-2");
+
 * {
   margin: 0;
   padding: 0;
@@ -25,11 +27,13 @@ body {
 #imgPokemon {
   height: 200px;
   width: 200px;
+  margin: 10px 0 30px 0;
 }
 
 p {
   font-size: 32px;
   font-weight: 600;
+  font-family: "Gill Sans MT", sans-serif;
 }
 
 button {
@@ -37,7 +41,7 @@ button {
   font-weight: 600;
   height: 40px;
   width: 120px;
-  margin: 16px;
+  margin: 32px;
   background-color: rgb(255, 0, 0);
   border-radius: 8px;
   color: aliceblue;
@@ -51,7 +55,7 @@ button:hover {
 .imgType {
   height: 30px;
   width: 30px;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
 .card {
