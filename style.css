@@ -7,10 +7,13 @@
 html,
 body {
   height: 100%;
+}
+
+body {
   background-color: rgba(107, 107, 255, 0.5);
 }
 
-.container {
+#container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +22,7 @@ body {
   height: 100%;
 }
 
-img {
+#imgPokemon {
   height: 150px;
   width: 150px;
 }
@@ -32,9 +35,15 @@ p {
 button {
   font-size: 16px;
   font-weight: 600;
-  height: 50px;
-  width: 150px;
+  height: 40px;
+  width: 120px;
   margin: 16px;
   background-color: rgb(255, 0, 0);
   color: aliceblue;
+}
+
+.imgType {
+  height: 50px;
+  width: 50px;
+  margin: 0 20px;
 }

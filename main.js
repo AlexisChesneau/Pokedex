@@ -1,7 +1,10 @@
+const container = document.getElementById("container");
 const namePokemon = document.getElementById("namePokemon");
+const typePokemon = document.getElementById("typePokemon");
 const imgPokemon = document.getElementById("imgPokemon");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
+const typeContainer = document.getElementById("typeContainer");
 
 const API = `https://tyradex.vercel.app/api/v1/gen/1`;
 
@@ -13,6 +16,22 @@ function afficherPokemon() {
     .then((data) => {
       namePokemon.innerHTML = data[indexPokemon].name.fr;
       imgPokemon.src = data[indexPokemon].sprites.regular;
+
+      const typePokemon = data[indexPokemon].types;
+
+      const resetTypeImages = document.querySelectorAll(".imgType");
+      resetTypeImages.forEach((image) => {
+        image.remove();
+      });
+
+      for (let i = 0; i < typePokemon.length; i++) {
+        const imgType = document.createElement("img");
+
+        imgType.classList.add("imgType");
+        imgType.src = typePokemon[i].image;
+
+        typeContainer.appendChild(imgType);
+      }
     })
     .catch((err) => console.log(err));
 }
