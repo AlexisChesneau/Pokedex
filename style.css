@@ -9,6 +9,7 @@
 html,
 body {
   height: 100%;
+  user-select: none;
 }
 
 body {
@@ -25,9 +26,8 @@ body {
 }
 
 #imgPokemon {
-  height: 200px;
-  width: 200px;
-  margin: 10px 0 30px 0;
+  height: 280px;
+  width: 280px;
 }
 
 p {
@@ -55,17 +55,48 @@ button:hover {
 .imgType {
   height: 30px;
   width: 30px;
-  margin: 0 10px;
+  margin: 0 4px;
 }
 
 .card {
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   border: 16px solid #fff700;
-  height: 500px;
-  width: 400px;
+  height: 600px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.spellName {
+  font-size: 20px;
+  padding: 2px;
+}
+
+.pokemonNameType {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.imgPokemonContainer {
+  height: 320px;
+  width: 320px;
+  background-image: url("https://trustmyscience.com/wp-content/uploads/2018/09/couleur-ciel.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  border: 8px solid #fff700;
+  display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.typeContainerSpells {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
