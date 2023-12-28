@@ -26,24 +26,23 @@ function afficherPokemon() {
       namePokemon.innerHTML = data[indexPokemon].name.fr;
       imgPokemon.src = data[indexPokemon].sprites.regular;
 
-      for (let i = 0; i < typePokemon.length; i++) {
+      for (let i = 0; i < (typePokemon.length, spellPokemon.length); i++) {
         const imgType = document.createElement("img");
-
-        imgType.classList.add("imgType");
-        imgType.src = typePokemon[i].image;
-
-        typeContainerTypes.appendChild(imgType);
-      }
-
-      for (let y = 0; y < spellPokemon.length; y++) {
         const spellName = document.createElement("p");
 
+        imgType.classList.add("imgType");
         spellName.classList.add("spellName");
-        spellName.innerHTML = spellPokemon[y].name;
 
-        typeContainerSpells.appendChild(spellName);
+        if (i < typePokemon.length) {
+          imgType.src = typePokemon[i].image;
+          typeContainerTypes.appendChild(imgType);
+        }
+
+        if (i < spellPokemon.length) {
+          spellName.innerHTML = spellPokemon[i].name;
+          typeContainerSpells.appendChild(spellName);
+        }
       }
-
       TypeBackground(typePokemon);
     })
     .catch((err) => console.log(err));
