@@ -31,9 +31,12 @@ body {
 }
 
 p {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 600;
   font-family: "Gill Sans MT", sans-serif;
+  background-color: #fff700;
+  border-radius: 6px;
+  padding: 4px 8px;
 }
 
 button {
@@ -53,9 +56,11 @@ button:hover {
 }
 
 .imgType {
-  height: 30px;
-  width: 30px;
+  height: 38px;
+  width: 38px;
   margin: 0 4px;
+  border: 4px solid #fff700;
+  border-radius: 6px;
 }
 
 .card {
@@ -72,13 +77,13 @@ button:hover {
 
 .spellName {
   font-size: 20px;
-  padding: 2px;
 }
 
 .pokemonNameType {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 0 50px;
   align-items: center;
 }
 

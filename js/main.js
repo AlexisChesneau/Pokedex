@@ -1,4 +1,5 @@
-const container = document.getElementById("container");
+import { TypeBackground } from "./typeBackground.js";
+
 const namePokemon = document.getElementById("namePokemon");
 const imgPokemon = document.getElementById("imgPokemon");
 const previousButton = document.getElementById("previous");
@@ -14,15 +15,16 @@ function afficherPokemon() {
   fetch(API)
     .then((res) => res.json())
     .then((data) => {
+      const typePokemon = data[indexPokemon].types;
+      const spellPokemon = data[indexPokemon].talents;
+
+      const resetElement = document.querySelectorAll(".imgType, .spellName");
+      resetElement.forEach((element) => {
+        element.remove();
+      });
+
       namePokemon.innerHTML = data[indexPokemon].name.fr;
       imgPokemon.src = data[indexPokemon].sprites.regular;
-
-      const typePokemon = data[indexPokemon].types;
-
-      const resetTypeImages = document.querySelectorAll(".imgType");
-      resetTypeImages.forEach((image) => {
-        image.remove();
-      });
 
       for (let i = 0; i < typePokemon.length; i++) {
         const imgType = document.createElement("img");
@@ -33,13 +35,6 @@ function afficherPokemon() {
         typeContainerTypes.appendChild(imgType);
       }
 
-      const spellPokemon = data[indexPokemon].talents;
-
-      const resetSpellImages = document.querySelectorAll(".spellName");
-      resetSpellImages.forEach((p) => {
-        p.remove();
-      });
-
       for (let y = 0; y < spellPokemon.length; y++) {
         const spellName = document.createElement("p");
 
@@ -48,6 +43,8 @@ function afficherPokemon() {
 
         typeContainerSpells.appendChild(spellName);
       }
+
+      TypeBackground(typePokemon);
     })
     .catch((err) => console.log(err));
 }
