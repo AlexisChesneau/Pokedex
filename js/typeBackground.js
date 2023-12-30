@@ -105,10 +105,13 @@ export function TypeBackground(typePokemon) {
         "https://i.pinimg.com/736x/f6/a1/8a/f6a18ac56651ce4f9ca7e0230706a0b6.jpg",
     },
   ];
+
   for (let i = 0; i < typePokemonInfoBackground.length; i++) {
+    console.log(i);
     if (typePokemon[0].name === typePokemonInfoBackground[i].type) {
       card.style.backgroundColor = typePokemonInfoBackground[i].backgroundColor;
       imgPokemonContainer.style.backgroundImage = `url("${typePokemonInfoBackground[i].imageUrl}")`;
+      break;
     }
   }
 }
