@@ -155,14 +155,29 @@ h2 {
   font-size: 35px;
 }
 
+@media (max-height: 800px) {
+  button {
+    margin: 40px 20px 40px;
+  }
+}
+
+@media (max-width: 720px) {
+  h2 {
+    font-size: 30px;
+  }
+  button {
+    height: 36px;
+    width: 80px;
+    margin: 50px 20px 50px;
+  }
+}
+
 @media (max-width: 600px) {
   h2 {
     font-size: 20px;
   }
   button {
-    height: 36px;
-    width: 80px;
-    margin: 30px 10px 30px;
+    margin: 30px 20px 30px;
     font-size: 14px;
   }
 }
