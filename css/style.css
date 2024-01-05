@@ -1,6 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/gill-sans-mt-2");
 
 * {
+  font-family: "Gill Sans MT", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -55,7 +56,6 @@ body {
 p {
   font-size: 24px;
   font-weight: 600;
-  font-family: "Gill Sans MT", sans-serif;
   background-color: #fff700;
   border-radius: 6px;
   padding: 4px 8px;
@@ -66,16 +66,15 @@ button {
   font-weight: 600;
   height: 40px;
   width: 120px;
-  margin: 80px 60px 0;
+  margin: 80px 60px 80px;
   background-color: rgb(255, 0, 0);
   border-radius: 8px;
   color: aliceblue;
-  border: 2px solid #fff700;
-  border-bottom: 5px solid #fff700;
+  border: 2px solid #ffffff;
+  border-bottom: 5px solid #ffffff;
 }
 
 button:active {
-  margin-top: 4px;
   border-bottom: 1px solid #fff700;
   transform: translateY(6px);
 }
@@ -139,4 +138,19 @@ button:disabled {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: aliceblue;
+  font-size: 75px;
+}
+
+h2 {
+  color: aliceblue;
+  font-size: 35px;
 }

@@ -2,27 +2,64 @@ import { TypeBackground } from "./typeBackground.js";
 
 const namePokemon = document.getElementById("namePokemon");
 const imgPokemon = document.getElementById("imgPokemon");
-const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
+const previousPokemon = document.getElementById("previousPokemon");
+const nextPokemon = document.getElementById("nextPokemon");
+const previousGeneration = document.getElementById("previousGeneration");
+const nextGeneration = document.getElementById("nextGeneration");
 const typeContainerTypes = document.getElementById("typeContainerTypes");
 const typeContainerSpells = document.getElementById("typeContainerSpells");
+const numberGen = document.getElementById("numberGen");
+const numberPokemon = document.getElementById("numberPokemon");
 
-const API = `https://tyradex.vercel.app/api/v1/gen/1`;
+let indexGeneration = 1;
+let indexGenMin = 1;
+let indexGenMax = 1;
+numberGen.innerHTML = "Génération N°" + 1;
+numberPokemon.innerHTML = "Pokemon N°" + indexGeneration;
 
-let indexPokemon = 0;
+let indexPokemon;
 let data;
 
-fetch(API)
-  .then((res) => res.json())
-  .then((apiData) => {
-    data = apiData;
-    afficherPokemon();
-  })
-  .catch((err) => console.log(err));
+function loadGeneration(indexGen) {
+  const API = `https://tyradex.vercel.app/api/v1/gen/${indexGen}`;
+  indexPokemon = 0;
+  fetch(API)
+    .then((res) => res.json())
+    .then((apiData) => {
+      data = apiData;
+      afficherPokemon();
+      numberPokemon.innerHTML = "Pokemon N°" + data[indexPokemon].pokedexId;
+      numberGen.innerHTML = "Génération N°" + indexGeneration;
+      previousPokemon.disabled = true;
+      if (indexGeneration === indexGenMin) {
+        previousGeneration.disabled = true;
+      }
+      if (indexGeneration === indexGenMax) {
+        nextGeneration.disabled = true;
+      }
+    })
+    .catch((err) => console.log(err));
+}
+
+function getGen() {
+  const API = `https://tyradex.vercel.app/api/v1/gen`;
+  fetch(API)
+    .then((res) => res.json())
+    .then((apiData) => {
+      const nbGen = apiData.length - 1;
+      if (nbGen > 0) {
+        indexGenMin = apiData[0].generation;
+        indexGenMax = apiData[nbGen].generation;
+      }
+    })
+    .catch((err) => console.log(err));
+}
 
 function afficherPokemon() {
   const typePokemon = data[indexPokemon].types;
   const spellPokemon = data[indexPokemon].talents;
+
+  numberPokemon.innerHTML = "Pokemon N°" + data[indexPokemon].pokedexId;
 
   const resetElement = document.querySelectorAll(".imgType, .spellName");
   resetElement.forEach((element) => {
@@ -52,33 +89,75 @@ function afficherPokemon() {
   TypeBackground(typePokemon);
 }
 
-function decrementIndex() {
+function decrementIndexPokemonIfNotFirstPokemon() {
   if (indexPokemon > 0) {
     indexPokemon--;
-    nextButton.disabled = false;
-  } else {
-    previousButton.disabled = true;
   }
 }
 
-function incrementIndex() {
+function incrementIndexPokemonIfNotLastPokemon() {
   if (indexPokemon < data.length - 1) {
     indexPokemon++;
-    previousButton.disabled = false;
-  } else {
-    nextButton.disabled = true;
   }
 }
 
-function PreviousPokemon() {
-  decrementIndex();
+function decrementIndexPokemon() {
+  decrementIndexPokemonIfNotFirstPokemon();
+  if (indexPokemon > 0) {
+    nextPokemon.disabled = false;
+  } else {
+    previousPokemon.disabled = true;
+  }
+}
+
+function incrementIndexPokemon() {
+  incrementIndexPokemonIfNotLastPokemon();
+  if (indexPokemon < data.length - 1) {
+    previousPokemon.disabled = false;
+  } else {
+    nextPokemon.disabled = true;
+  }
+}
+
+function incrementIndexGen() {
+  if (indexGeneration < indexGenMax) {
+    indexGeneration++;
+    previousGeneration.disabled = false;
+  }
+}
+
+function decrementIndexGen() {
+  if (indexGeneration > indexGenMin) {
+    indexGeneration--;
+    nextGeneration.disabled = false;
+  }
+}
+
+function changeToPreviousPokemon() {
+  decrementIndexPokemon();
   afficherPokemon();
 }
 
-function NextPokemon() {
-  incrementIndex();
+function changeToNextPokemon() {
+  incrementIndexPokemon();
   afficherPokemon();
 }
 
-previousButton.addEventListener("click", PreviousPokemon);
-nextButton.addEventListener("click", NextPokemon);
+function changeToPreviousGeneration() {
+  decrementIndexGen();
+  loadGeneration(indexGeneration);
+}
+
+function changeToNextGeneration() {
+  incrementIndexGen();
+  loadGeneration(indexGeneration);
+}
+
+getGen();
+loadGeneration(indexGeneration);
+
+previousGeneration.addEventListener("click", changeToPreviousGeneration);
+nextGeneration.addEventListener("click", changeToNextGeneration);
+
+previousPokemon.addEventListener("click", changeToPreviousPokemon);
+nextPokemon.addEventListener("click", changeToNextPokemon);
