@@ -18,27 +18,6 @@ body {
   background-color: #15041d;
 }
 
-.circleShadow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  top: -5%;
-  left: 0%;
-  z-index: -1;
-}
-
-.circleShadow:nth-child(1) {
-  top: -20%;
-  left: 20%;
-  width: 1500px;
-  height: 1500px;
-}
-
-.circleShadow:nth-child(2) {
-  top: 20%;
-  left: -12%;
-}
-
 #container {
   display: flex;
   flex-direction: column;
