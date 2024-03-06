@@ -28,7 +28,7 @@ function loadGeneration(indexGen) {
     .then((apiData) => {
       data = apiData;
       afficherPokemon();
-      numberPokemon.innerHTML = "Pokemon N°" + data[indexPokemon].pokedexId;
+      numberPokemon.innerHTML = "Pokemon N°" + data[indexPokemon].pokedex_id;
       numberGen.innerHTML = "Génération N°" + indexGeneration;
       previousPokemon.disabled = true;
       if (indexGeneration === indexGenMin) {
@@ -59,7 +59,7 @@ function afficherPokemon() {
   const typePokemon = data[indexPokemon].types;
   const spellPokemon = data[indexPokemon].talents;
 
-  numberPokemon.innerHTML = "Pokemon N°" + data[indexPokemon].pokedexId;
+  numberPokemon.innerHTML = "Pokemon N°" + data[indexPokemon].pokedex_id;
 
   const resetElement = document.querySelectorAll(".imgType, .spellName");
   resetElement.forEach((element) => {
