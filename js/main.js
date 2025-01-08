@@ -153,11 +153,14 @@ function changeToNextGeneration() {
   loadGeneration(indexGeneration);
 }
 
-getGen();
-loadGeneration(indexGeneration);
 
-previousGeneration.addEventListener("click", changeToPreviousGeneration);
-nextGeneration.addEventListener("click", changeToNextGeneration);
+window.addEventListener("load", () => {
+  getGen();
+  loadGeneration(indexGeneration);
 
-previousPokemon.addEventListener("click", changeToPreviousPokemon);
-nextPokemon.addEventListener("click", changeToNextPokemon);
+  previousGeneration.addEventListener("click", changeToPreviousGeneration);
+  nextGeneration.addEventListener("click", changeToNextGeneration);
+
+  previousPokemon.addEventListener("click", changeToPreviousPokemon);
+  nextPokemon.addEventListener("click", changeToNextPokemon);
+});
