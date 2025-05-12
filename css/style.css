@@ -16,6 +16,10 @@ body {
 
 body {
   background-color: #15041d;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #container {
